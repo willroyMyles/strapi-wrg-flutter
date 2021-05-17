@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/posts": {
+    "/conversations": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the conversations's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve conversations document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Conversations"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Conversations"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new conversations record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve conversations document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Conversations"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Conversations"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewConversations"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/conversations/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of conversations documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve conversations document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Conversations"
         ],
         "parameters": []
       }
     },
-    "/posts/{id}": {
+    "/conversations/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one conversations record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve conversations document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Conversations"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Conversations"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single conversations record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve conversations document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Conversations"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Conversations"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewConversations"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single conversations record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single conversations based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Conversations"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Post": {
+      "Conversations": {
         "required": [
           "id"
         ],
@@ -522,40 +522,7 @@
           "id": {
             "type": "string"
           },
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "subCategory": {
-            "type": "string"
-          },
-          "make": {
-            "type": "string"
-          },
-          "model": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "views": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "userImageUrl": {
-            "type": "string"
-          },
-          "comments": {
+          "messages": {
             "type": "array",
             "items": {
               "required": [
@@ -565,38 +532,17 @@
                 "id": {
                   "type": "string"
                 },
-                "userId": {
-                  "type": "string"
-                },
-                "username": {
-                  "type": "string"
-                },
-                "userImageUrl": {
-                  "type": "string"
-                },
-                "title": {
+                "sender": {
                   "type": "string"
                 },
                 "content": {
                   "type": "string"
                 },
-                "isOffer": {
-                  "type": "boolean"
-                },
-                "postId": {
+                "conversation": {
                   "type": "string"
                 },
-                "random": {
-                  "type": "uid"
-                },
-                "post": {
+                "published_at": {
                   "type": "string"
-                },
-                "conversations": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -607,7 +553,59 @@
               }
             }
           },
-          "user_info": {
+          "locked": {
+            "type": "boolean"
+          },
+          "comment": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "userImageUrl": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "isOffer": {
+                "type": "boolean"
+              },
+              "postId": {
+                "type": "string"
+              },
+              "random": {
+                "type": "uid"
+              },
+              "post": {
+                "type": "string"
+              },
+              "conversations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "outgoing": {
             "required": [
               "id"
             ],
@@ -661,52 +659,91 @@
                 "type": "string"
               }
             }
+          },
+          "incoming": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "userImageUrl": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "alias": {
+                "type": "string"
+              },
+              "posts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "watching": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "outgoings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "incomings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
-      "NewPost": {
+      "NewConversations": {
         "properties": {
-          "title": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "subCategory": {
-            "type": "string"
-          },
-          "make": {
-            "type": "string"
-          },
-          "model": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "views": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "userImageUrl": {
-            "type": "string"
-          },
-          "comments": {
+          "messages": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "user_info": {
+          "locked": {
+            "type": "boolean"
+          },
+          "comment": {
             "type": "string"
+          },
+          "outgoing": {
+            "type": "string"
+          },
+          "incoming": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -720,7 +757,7 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Conversations"
     }
   ]
 }

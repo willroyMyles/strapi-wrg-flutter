@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "name": "Comment",
+    "description": ""
+  },
+  "options": {
+    "increments": false,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "userImageUrl": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "isOffer": {
+      "type": "boolean"
+    },
+    "postId": {
+      "type": "string"
+    },
+    "random": {
+      "type": "uid"
+    },
+    "post": {
+      "via": "comments",
+      "model": "post"
+    },
+    "conversations": {
+      "via": "comment",
+      "collection": "conversations"
+    }
+  }
+}

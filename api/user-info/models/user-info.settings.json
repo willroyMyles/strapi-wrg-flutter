@@ -2,18 +2,16 @@
   "kind": "collectionType",
   "collectionName": "user_infos",
   "info": {
-    "name": "UserInfo"
+    "name": "UserInfo",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "posts": {
-      "collection": "post"
-    },
     "username": {
       "type": "string"
     },
@@ -22,6 +20,28 @@
     },
     "userId": {
       "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "unique": true
+    },
+    "alias": {
+      "type": "string"
+    },
+    "posts": {
+      "collection": "post",
+      "via": "user_info"
+    },
+    "watching": {
+      "collection": "post"
+    },
+    "outgoings": {
+      "collection": "conversations",
+      "via": "outgoing"
+    },
+    "incomings": {
+      "collection": "conversations",
+      "via": "incoming"
     }
   }
 }

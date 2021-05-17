@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/conversations",
+      "handler": "conversations.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/count",
+      "handler": "conversations.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/conversations/:id",
+      "handler": "conversations.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/conversations",
+      "handler": "conversations.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/conversations/:id",
+      "handler": "conversations.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/conversations/:id",
+      "handler": "conversations.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

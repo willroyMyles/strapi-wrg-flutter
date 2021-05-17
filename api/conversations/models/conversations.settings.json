@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "conversations",
+  "info": {
+    "name": "Conversations",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "messages": {
+      "via": "conversation",
+      "collection": "messages"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "comment": {
+      "model": "comment",
+      "via": "conversations"
+    },
+    "outgoing": {
+      "via": "outgoings",
+      "model": "user-info"
+    },
+    "incoming": {
+      "via": "incomings",
+      "model": "user-info"
+    }
+  }
+}

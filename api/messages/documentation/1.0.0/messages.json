@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/posts": {
+    "/messages": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the messages's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve messages document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Messages"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Messages"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new messages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve messages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Messages"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Messages"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewMessages"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/messages/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of messages documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve messages document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Messages"
         ],
         "parameters": []
       }
     },
-    "/posts/{id}": {
+    "/messages/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one messages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve messages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Messages"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Messages"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single messages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve messages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Messages"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Messages"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewMessages"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single messages record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single messages based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Messages"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Post": {
+      "Messages": {
         "required": [
           "id"
         ],
@@ -522,92 +522,13 @@
           "id": {
             "type": "string"
           },
-          "title": {
+          "sender": {
             "type": "string"
           },
           "content": {
             "type": "string"
           },
-          "category": {
-            "type": "string"
-          },
-          "subCategory": {
-            "type": "string"
-          },
-          "make": {
-            "type": "string"
-          },
-          "model": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "views": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "userImageUrl": {
-            "type": "string"
-          },
-          "comments": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "userId": {
-                  "type": "string"
-                },
-                "username": {
-                  "type": "string"
-                },
-                "userImageUrl": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "isOffer": {
-                  "type": "boolean"
-                },
-                "postId": {
-                  "type": "string"
-                },
-                "random": {
-                  "type": "uid"
-                },
-                "post": {
-                  "type": "string"
-                },
-                "conversations": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "user_info": {
+          "conversation": {
             "required": [
               "id"
             ],
@@ -615,44 +536,26 @@
               "id": {
                 "type": "string"
               },
-              "username": {
-                "type": "string"
-              },
-              "userImageUrl": {
-                "type": "string"
-              },
-              "userId": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "alias": {
-                "type": "string"
-              },
-              "posts": {
+              "messages": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "watching": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "locked": {
+                "type": "boolean"
               },
-              "outgoings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "comment": {
+                "type": "string"
               },
-              "incomings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "outgoing": {
+                "type": "string"
+              },
+              "incoming": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -661,52 +564,27 @@
                 "type": "string"
               }
             }
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
-      "NewPost": {
+      "NewMessages": {
         "properties": {
-          "title": {
+          "sender": {
             "type": "string"
           },
           "content": {
             "type": "string"
           },
-          "category": {
+          "conversation": {
             "type": "string"
           },
-          "subCategory": {
-            "type": "string"
-          },
-          "make": {
-            "type": "string"
-          },
-          "model": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "views": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "userImageUrl": {
-            "type": "string"
-          },
-          "comments": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "user_info": {
-            "type": "string"
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -720,7 +598,7 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Messages"
     }
   ]
 }

@@ -5,4 +5,14 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+    findByEmail: async ctx => {
+        const {email} = ctx.params;
+        return email;
+    },
+
+    findOneByEmail: async ctx => {
+        const {email} = ctx.params;
+        return email;
+    }
+};

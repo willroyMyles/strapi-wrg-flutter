@@ -1,5 +1,73 @@
 {
   "paths": {
+    "/user-info/email/{email}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Retrieve user-info document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "User-info"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/user-infos": {
       "get": {
         "deprecated": false,
@@ -523,6 +591,74 @@
           }
         ]
       }
+    },
+    "/user-infos/{email}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "User-info"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -533,6 +669,21 @@
         ],
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "userImageUrl": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "alias": {
             "type": "string"
           },
           "posts": {
@@ -569,6 +720,122 @@
                 "views": {
                   "type": "integer"
                 },
+                "username": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "userImageUrl": {
+                  "type": "string"
+                },
+                "comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user_info": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "watching": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "subCategory": {
+                  "type": "string"
+                },
+                "make": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "year": {
+                  "type": "integer"
+                },
+                "views": {
+                  "type": "integer"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "userImageUrl": {
+                  "type": "string"
+                },
+                "comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user_info": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "outgoings": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "messages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locked": {
+                  "type": "boolean"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "outgoing": {
+                  "type": "string"
+                },
+                "incoming": {
+                  "type": "string"
+                },
                 "published_at": {
                   "type": "string"
                 },
@@ -581,6 +848,50 @@
               }
             }
           },
+          "incomings": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "messages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locked": {
+                  "type": "boolean"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "outgoing": {
+                  "type": "string"
+                },
+                "incoming": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewUser-info": {
+        "properties": {
           "username": {
             "type": "string"
           },
@@ -590,32 +901,35 @@
           "userId": {
             "type": "string"
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "NewUser-info": {
-        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "alias": {
+            "type": "string"
+          },
           "posts": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "username": {
-            "type": "string"
+          "watching": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "userImageUrl": {
-            "type": "string"
+          "outgoings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "userId": {
-            "type": "string"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "incomings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/posts": {
+    "/comments": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Comment"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Comment"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Comment"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Comment"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewComment"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/comments/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Comment"
         ],
         "parameters": []
       }
     },
-    "/posts/{id}": {
+    "/comments/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Comment"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Comment"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Comment"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Comment"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewComment"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Comment"
         ],
         "parameters": [
           {
@@ -514,12 +514,21 @@
   },
   "components": {
     "schemas": {
-      "Post": {
+      "Comment": {
         "required": [
           "id"
         ],
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "userImageUrl": {
             "type": "string"
           },
           "title": {
@@ -528,34 +537,74 @@
           "content": {
             "type": "string"
           },
-          "category": {
+          "isOffer": {
+            "type": "boolean"
+          },
+          "postId": {
             "type": "string"
           },
-          "subCategory": {
-            "type": "string"
+          "random": {
+            "type": "uid"
           },
-          "make": {
-            "type": "string"
+          "post": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "subCategory": {
+                "type": "string"
+              },
+              "make": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "views": {
+                "type": "integer"
+              },
+              "username": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "userImageUrl": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user_info": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
-          "model": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "views": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "userImageUrl": {
-            "type": "string"
-          },
-          "comments": {
+          "conversations": {
             "type": "array",
             "items": {
               "required": [
@@ -565,38 +614,26 @@
                 "id": {
                   "type": "string"
                 },
-                "userId": {
-                  "type": "string"
-                },
-                "username": {
-                  "type": "string"
-                },
-                "userImageUrl": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "isOffer": {
-                  "type": "boolean"
-                },
-                "postId": {
-                  "type": "string"
-                },
-                "random": {
-                  "type": "uid"
-                },
-                "post": {
-                  "type": "string"
-                },
-                "conversations": {
+                "messages": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
+                },
+                "locked": {
+                  "type": "boolean"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "outgoing": {
+                  "type": "string"
+                },
+                "incoming": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -606,107 +643,43 @@
                 }
               }
             }
-          },
-          "user_info": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "userImageUrl": {
-                "type": "string"
-              },
-              "userId": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "alias": {
-                "type": "string"
-              },
-              "posts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "watching": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "outgoings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "incomings": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
           }
         }
       },
-      "NewPost": {
+      "NewComment": {
         "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "userImageUrl": {
+            "type": "string"
+          },
           "title": {
             "type": "string"
           },
           "content": {
             "type": "string"
           },
-          "category": {
+          "isOffer": {
+            "type": "boolean"
+          },
+          "postId": {
             "type": "string"
           },
-          "subCategory": {
+          "random": {
+            "type": "uid"
+          },
+          "post": {
             "type": "string"
           },
-          "make": {
-            "type": "string"
-          },
-          "model": {
-            "type": "string"
-          },
-          "year": {
-            "type": "integer"
-          },
-          "views": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "userImageUrl": {
-            "type": "string"
-          },
-          "comments": {
+          "conversations": {
             "type": "array",
             "items": {
               "type": "string"
             }
-          },
-          "user_info": {
-            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -720,7 +693,7 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Comment"
     }
   ]
 }

@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/user-info/email/:email",
+      "handler": "user-info.findOneByEmail",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/user-infos",
       "handler": "user-info.find",
       "config": {
@@ -20,6 +28,14 @@
       "method": "GET",
       "path": "/user-infos/:id",
       "handler": "user-info.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-infos/:email",
+      "handler": "user-info.findByEmail",
       "config": {
         "policies": []
       }
